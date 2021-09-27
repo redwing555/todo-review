@@ -28,7 +28,7 @@ function addTaskToStorage() {
   localStorage.setItem('tasksList', tasksInfo);
 }
 
-function AddTask() {
+const AddTask = () => {
   const task = {
     description: document.querySelector('.input-task').value,
     completed: false,
@@ -39,7 +39,7 @@ function AddTask() {
   addTaskToStorage();
 }
 
-function deleteCompletedTask(taskArr) {
+let deleteCompletedTask = (taskArr) => {
   const storeLength = JSON.parse(localStorage.getItem('tasksList')).length;
 
   taskArr = taskArr.filter((task) => task.completed === false);
@@ -53,7 +53,7 @@ function deleteCompletedTask(taskArr) {
   localStorage.setItem('tasksList', JSON.stringify(taskArr));
 }
 
-function moveToTrash(taskArr) {
+let  moveToTrash = (taskArr) => {
   const trashCan = [...document.querySelectorAll('.trash')];
   const storeLength = JSON.parse(localStorage.getItem('tasksList')).length;
 
@@ -68,7 +68,7 @@ function moveToTrash(taskArr) {
   }));
 }
 
-function editTask(description, taskArr, event) {
+let editTask = (description, taskArr, event) => {
   if (event.target && event.target.matches('li.li-task')) {
     if ([...description.attributes][1].value === 'false') {
       event.target.style.backgroundColor = '#fff176';
@@ -91,17 +91,17 @@ function editTask(description, taskArr, event) {
 }
 
 
-function sortTasksbyIndex(arrTasks) {
+let sortTasksbyIndex = (arrTasks) => {
   arrTasks.sort((task1, task2) => task1.index - task2.index);
 }
 
-function hidden() {
+const hidden = () => {
   while (list.lastElementChild) {
     list.removeChild(list.lastElementChild);
   }
 }
 
-function createTask(index, description, taskState) {
+let createTask = (index, description, taskState) => {
   const taskInfo = document.createElement('li');
   const update = document.createElement('a');
 
@@ -124,7 +124,7 @@ function createTask(index, description, taskState) {
   }
 }
 
-function loadDomList() {
+const loadDomList = () => {
   sortTasksbyIndex(tasks);
   hidden();
   tasks.forEach((task) => {
