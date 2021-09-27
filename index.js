@@ -135,7 +135,6 @@ function loadDomList() {
     createTask(task.index, task.description, task.completed);
   });
 }
-
 document.addEventListener('DOMContentLoaded', () => {
   JSON.parse(localStorage.getItem('tasksList'));
   loadDomList();
@@ -162,3 +161,4 @@ refresh.addEventListener('click', () => {
 clearAll.addEventListener('click', () => {
   deleteCompletedTask(tasks);
 });
+
